@@ -1,13 +1,15 @@
 FROM php:8.2-fpm
 
 # Install system dependencies & PHP extensions
-RUN apt-get update && apt-get install -y \
+RUN sed -i 's|deb.debian.org|deb.debian.org|g' /etc/apt/sources.list \
+    && apt-get update -y \
+    && apt-get install -y \
     git \
     curl \
     zip \
     unzip \
     libpng-dev \
-    libjpeg-dev \
+    libjpeg62-turbo-dev \
     libfreetype6-dev \
     libwebp-dev \
     libzip-dev \
