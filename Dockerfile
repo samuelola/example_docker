@@ -16,7 +16,6 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install gd
 
-
 # Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install \
@@ -28,7 +27,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     bcmath \
     gd
 
-# Install Composer (from official image)
+# Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Copy project files
@@ -36,5 +35,5 @@ COPY . .
 
 RUN composer install --no-dev --optimize-autoloader
 
-
-
+# ✅ Set Laravel app to start directly with artisan serve
+CMD ["bash", "-c", "php artisan key:generate --force && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=80"]
