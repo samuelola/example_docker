@@ -20,16 +20,6 @@ services:
       SESSION_DRIVER: file
       QUEUE_CONNECTION: sync
 
-    # 👇 Force override of the default "php-fpm" entrypoint
-    entrypoint: ["/bin/sh", "-c"]
-
-    start:
-      cmd: >
-        "composer install --no-dev --optimize-autoloader &&
-         php artisan key:generate --force &&
-         php artisan migrate --force &&
-         php artisan serve --host=0.0.0.0 --port=80"
-
     healthcheck:
       path: /
       interval: 10
