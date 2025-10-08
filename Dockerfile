@@ -37,5 +37,7 @@ RUN cp .env.example .env
 
 RUN composer install --no-dev --optimize-autoloader
 
+ENV DB_HOST=nozomi.proxy.rlwy.net
+
 # ✅ Set Laravel app to start directly with artisan serve
 CMD ["bash", "-c", "php artisan key:generate --force && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=80"]
