@@ -33,6 +33,8 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # Copy project files
 COPY . .
 
+RUN cp .env.example .env
+
 RUN composer install --no-dev --optimize-autoloader
 
 # ✅ Set Laravel app to start directly with artisan serve
