@@ -15,10 +15,12 @@ services:
     image: mysql:8.0
     restart: always
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_USER: ${DB_USERNAME}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: railway
+      MYSQL_USER: root
+      MYSQL_PASSWORD: alKHSBmPkpzLGjaPicPoCxFjEWNATyOq
+      MYSQL_ROOT_PASSWORD: alKHSBmPkpzLGjaPicPoCxFjEWNATyOq
+      MYSQL_HOST: nozomi.proxy.rlwy.net
+      MYSQL_PORT: 18193
     volumes:
       - db_data:/var/lib/mysql
     ports:
